@@ -4,6 +4,7 @@ plugins {
   id("dagger.hilt.android.plugin")
   id("com.google.dagger.hilt.android")
   id("org.jetbrains.kotlin.android")
+  id("com.google.devtools.ksp") version ("1.7.20-1.0.8")
 }
 
 dependencies {
@@ -25,6 +26,9 @@ dependencies {
   implementation(libs.hilt.android)
   kapt(libs.hilt.compiler)
   kapt(libs.hilt.android.compiler)
+
+  implementation(libs.casa)
+  ksp(libs.casa.processor)
 }
 
 repositories {

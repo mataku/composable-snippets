@@ -73,6 +73,7 @@ fun LoopingHorizontalBannerPagerSample(
             fontWeight = FontWeight.Bold,
             modifier = Modifier
               .padding(16.dp),
+            color = MaterialTheme.colors.onPrimary
           )
         }
       }
@@ -99,7 +100,8 @@ fun LoopingHorizontalBannerPagerSample(
         textAlign = TextAlign.Center,
         modifier = Modifier
           .fillMaxWidth()
-          .padding(8.dp)
+          .padding(8.dp),
+        color = MaterialTheme.colors.onPrimary
       )
 
       Row(
@@ -127,7 +129,7 @@ private fun TextInCircle(
   selected: Boolean
 ) {
   val borderColor = if (selected) {
-    MaterialTheme.colors.onSurface
+    MaterialTheme.colors.onPrimary
   } else {
     Color.LightGray
   }

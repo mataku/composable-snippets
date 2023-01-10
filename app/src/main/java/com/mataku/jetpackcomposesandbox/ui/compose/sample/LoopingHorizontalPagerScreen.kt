@@ -1,23 +1,23 @@
-@file:OptIn(
-  ExperimentalFoundationApi::class,
-  ExperimentalComposeUiApi::class
-)
+package com.mataku.jetpackcomposesandbox.ui.compose.sample
 
-package com.mataku.jetpackcomposesandbox.ui.compose
-
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import com.google.android.catalog.framework.annotations.Sample
 import com.mataku.jetpackcomposesandbox.R
 import com.mataku.jetpackcomposesandbox.entity.Banner
 import com.mataku.jetpackcomposesandbox.ui.compose.component.LoopingHorizontalBannerPagerSample
 
+@Sample(
+  name = "Looping HorizontalPager",
+  description = "Infinite HorizontalPager looping",
+  tags = ["HorizontalPager"],
+  sourcePath = "https://github.com/mataku/composable-snippets/blob/develop/app/src/main/java/com/mataku/jetpackcomposesandbox/ui/compose/sample/LoopingHorizontalPagerScreen.kt"
+)
 @Composable
-fun MainScreen() {
+fun LoopingHorizontalPagerScreen() {
   val lazyListState = rememberLazyListState()
 
   LazyColumn(

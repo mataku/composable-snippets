@@ -1,22 +1,12 @@
 package com.mataku.jetpackcomposesandbox.ui.activity
 
 import android.os.Bundle
-import androidx.activity.compose.setContent
-import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.material.Surface
-import com.mataku.jetpackcomposesandbox.ui.AppTheme
-import com.mataku.jetpackcomposesandbox.ui.compose.MainScreen
+import com.google.android.catalog.framework.ui.CatalogActivity
+import dagger.hilt.android.AndroidEntryPoint
 
-class MainActivity : AppCompatActivity() {
+@AndroidEntryPoint
+class MainActivity : CatalogActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-
-    setContent {
-      AppTheme {
-        Surface {
-          MainScreen()
-        }
-      }
-    }
   }
 }

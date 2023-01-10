@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">JetpackComposeSandbox</string>
+  <string name="app_name">Composable snippets</string>
+  <string name="source_base_url">https://github.com/mataku/composable-snippets/tree/develop/%1$s</string>
+  <string name="documentation_base_url">https://github.com/mataku/composable-snippets</string>
 </resources>
