@@ -22,6 +22,7 @@ compose-animation = { module = "androidx.compose.animation:animation", version.r
 compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
 compose-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version = "2.5.1" }
 compose-navigation = { module = "androidx.navigation:navigation-compose", version = "2.5.1" }
+constraintlayout-compose = { module = "androidx.constraintlayout:constraintlayout-compose", version = "1.0.1" }
 
 accompanist-pager = { module = "com.google.accompanist:accompanist-pager", version.ref = "accompanist" }
 

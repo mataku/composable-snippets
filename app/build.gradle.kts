@@ -20,6 +20,7 @@ dependencies {
   implementation(libs.compose.navigation)
   implementation(libs.coil.compose)
   implementation(libs.accompanist.pager)
+  implementation(libs.constraintlayout.compose)
 
   implementation(libs.napier)
 
