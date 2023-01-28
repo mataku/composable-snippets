@@ -1,4 +1,4 @@
-package com.mataku.jetpackcomposesandbox.entity
+package com.mataku.snippets.entity
 
 import androidx.annotation.DrawableRes
 

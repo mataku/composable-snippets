@@ -1,6 +1,6 @@
 @file:OptIn(ExperimentalFoundationApi::class)
 
-package com.mataku.jetpackcomposesandbox.ui.compose.sample
+package com.mataku.snippets.ui.compose.sample
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
@@ -35,8 +35,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.google.android.catalog.framework.annotations.Sample
-import com.mataku.jetpackcomposesandbox.entity.Track
-import com.mataku.jetpackcomposesandbox.ui.Colors
+import com.mataku.snippets.entity.Track
+import com.mataku.snippets.ui.Colors
 
 @Sample(
   name = "Sticky header sample",

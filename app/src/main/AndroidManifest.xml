@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="com.mataku.jetpackcomposesandbox">
+  package="com.mataku.snippets">
 
   <uses-permission android:name="android.permission.INTERNET" />
 
@@ -12,7 +12,7 @@
     android:label="@string/app_name"
     android:roundIcon="@mipmap/ic_launcher_round"
     android:supportsRtl="true"
-    android:theme="@style/Theme.JetpackComposeSandbox">
+    android:theme="@style/Theme.Snippets">
     <activity
       android:name=".ui.activity.MainActivity"
       android:exported="true">

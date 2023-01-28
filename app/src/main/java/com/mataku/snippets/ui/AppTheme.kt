@@ -1,4 +1,4 @@
-package com.mataku.jetpackcomposesandbox.ui
+package com.mataku.snippets.ui
 
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.darkColors

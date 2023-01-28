@@ -1,6 +1,6 @@
 @file:OptIn(ExperimentalPagerApi::class)
 
-package com.mataku.jetpackcomposesandbox.ui.compose.component
+package com.mataku.snippets.ui.compose.component
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
@@ -33,9 +33,9 @@ import androidx.compose.ui.unit.sp
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
-import com.mataku.jetpackcomposesandbox.R
-import com.mataku.jetpackcomposesandbox.entity.Banner
-import com.mataku.jetpackcomposesandbox.ui.preview.MultiThemePreview
+import com.mataku.snippets.R
+import com.mataku.snippets.entity.Banner
+import com.mataku.snippets.ui.preview.MultiThemePreview
 
 // Looping HorizontalPager
 @Composable

@@ -46,7 +46,7 @@ class ApplicationConventionPlugin : Plugin<Project> {
           resources.excludes.addAll(excludePatterns)
         }
         defaultConfig {
-          applicationId = "com.mataku.jetpackcomposesandbox"
+          applicationId = "com.mataku.snippets"
           versionCode = 1
           versionName = "1.0.0"
           proguardFiles(

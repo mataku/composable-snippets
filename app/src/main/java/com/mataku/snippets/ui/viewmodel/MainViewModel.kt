@@ -1,4 +1,4 @@
-package com.mataku.jetpackcomposesandbox.ui.viewmodel
+package com.mataku.snippets.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

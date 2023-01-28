@@ -1,7 +1,7 @@
-package com.mataku.jetpackcomposesandbox.entity
+package com.mataku.snippets.entity
 
 import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
-import com.mataku.jetpackcomposesandbox.R
+import com.mataku.snippets.R
 
 data class Track(
   val name: String,

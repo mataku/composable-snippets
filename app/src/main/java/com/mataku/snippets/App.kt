@@ -1,4 +1,4 @@
-package com.mataku.jetpackcomposesandbox
+package com.mataku.snippets
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

@@ -1,4 +1,4 @@
-package com.mataku.jetpackcomposesandbox.ui.activity
+package com.mataku.snippets.ui.activity
 
 import android.os.Bundle
 import com.google.android.catalog.framework.ui.CatalogActivity
