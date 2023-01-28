@@ -1,4 +1,4 @@
-package com.mataku.snippets.ui.preview
+package com.mataku.snippets.ui.compose.preview
 
 import android.content.res.Configuration
 import androidx.compose.ui.tooling.preview.Preview

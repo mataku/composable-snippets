@@ -35,7 +35,7 @@ import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
 import com.mataku.snippets.R
 import com.mataku.snippets.entity.Banner
-import com.mataku.snippets.ui.preview.MultiThemePreview
+import com.mataku.snippets.ui.compose.preview.MultiThemePreview
 
 // Looping HorizontalPager
 @Composable
