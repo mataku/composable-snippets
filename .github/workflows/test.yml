@@ -30,6 +30,6 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
           restore-keys: |
             ${{ runner.os }}-gradle-
-      - name: Run layout tests
+      - name: Run assembleDebug
         run: |
           ./gradlew assembleDebug

@@ -3,9 +3,9 @@
     "config:base"
   ],
   "ignoreDeps": [
-    "androidx.compose*",
-    "com.google.accompanist:accompanist*",
-    "org.jetbrains.kotlin:*"
+    "androidx.compose:compose-bom",
+    "com.google.accompanist:accompanist-pager",
+    "org.jetbrains.kotlin:kotlin-gradle-plugin"
   ],
   "prConcurrentLimit": 5,
   "rebaseWhen": "never"
