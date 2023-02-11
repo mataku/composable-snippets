@@ -28,7 +28,7 @@ constraintlayout-compose = { module = "androidx.constraintlayout:constraintlayou
 accompanist-pager = { module = "com.google.accompanist:accompanist-pager", version.ref = "accompanist" }
 
 activity-ktx = { module = "androidx.activity:activity-ktx", version.ref = "activity" }
-coil-compose = { module = "io.coil-kt:coil-compose", version = "2.2.0" }
+coil-compose = { module = "io.coil-kt:coil-compose", version = "2.2.2" }
 
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
 hilt-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt" }
