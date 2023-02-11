@@ -1,0 +1,12 @@
+{
+  "extends": [
+    "config:base"
+  ],
+  "ignoreDeps": [
+    "androidx.compose:compose-bom",
+    "com.google.accompanist:accompanist-pager",
+    "org.jetbrains.kotlin:kotlin-gradle-plugin"
+  ],
+  "prConcurrentLimit": 5,
+  "rebaseWhen": "never"
+}
