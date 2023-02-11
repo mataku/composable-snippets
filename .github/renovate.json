@@ -3,13 +3,9 @@
     "config:base"
   ],
   "ignoreDeps": [
-    "androidx.compose.animation:animation",
-    "androidx.compose.ui:ui-tooling",
-    "com.google.accompanist:accompanist-navigation-animation",
-    "com.google.accompanist:accompanist-systemuicontroller",
-    "com.google.accompanist:accompanist-swiperefresh",
-    "org.jetbrains.kotlin:kotlin-gradle-plugin",
-    "org.jetbrains.kotlin:kotlin-serialization"
+    "androidx.compose*",
+    "com.google.accompanist:accompanist*",
+    "org.jetbrains.kotlin:*"
   ],
   "prConcurrentLimit": 5,
   "rebaseWhen": "never"
