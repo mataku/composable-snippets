@@ -1,7 +1,7 @@
 [versions]
 activity = "1.5.1"
 accompanist = "0.28.0"
-casa = "0.2.0"
+casa = "0.3.1"
 compose = "2023.01.00"
 coroutines = "1.6.4"
 hilt = "2.44.2"
