@@ -3,7 +3,7 @@
 package com.mataku.snippets.ui.compose.component
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.border
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -110,8 +110,7 @@ fun LoopingHorizontalBannerPagerSample(
         horizontalArrangement = Arrangement.Center
       ) {
         IntRange(0, scrollableList.lastIndex).forEach {
-          TextInCircle(
-            text = it.toString(),
+          SelectionStatus(
             selected = currentPosition == it,
             modifier = Modifier
               .padding(16.dp)
@@ -123,38 +122,23 @@ fun LoopingHorizontalBannerPagerSample(
 }
 
 @Composable
-private fun TextInCircle(
-  text: String,
+private fun SelectionStatus(
   modifier: Modifier = Modifier,
   selected: Boolean
 ) {
-  val borderColor = if (selected) {
-    MaterialTheme.colors.onPrimary
+  val circleColor = if (selected) {
+    Color.Black
   } else {
     Color.LightGray
   }
-  val borderWidth = if (selected) {
-    2.dp
-  } else {
-    1.dp
-  }
+
   Box(
     modifier = modifier
       .size(32.dp)
       .clip(CircleShape)
-      .border(
-        width = borderWidth,
-        color = borderColor,
-        shape = CircleShape
-      ),
+      .background(color = circleColor),
     contentAlignment = Alignment.Center
   ) {
-    Text(
-      text = text,
-      fontSize = 16.sp,
-      color = Color.Gray,
-      fontWeight = FontWeight.Bold
-    )
   }
 }
 
@@ -193,20 +177,17 @@ private fun TextInCirclePreview() {
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Center,
       ) {
-        TextInCircle(
-          text = "1",
+        SelectionStatus(
           selected = false,
           modifier = Modifier
             .padding(16.dp)
         )
-        TextInCircle(
-          text = "2",
+        SelectionStatus(
           selected = true,
           modifier = Modifier
             .padding(16.dp)
         )
-        TextInCircle(
-          text = "3",
+        SelectionStatus(
           selected = false,
           modifier = Modifier
             .padding(16.dp)
