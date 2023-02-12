@@ -12,7 +12,7 @@ kotest = "5.4.2"
 mockk = "1.12.8"
 
 [libraries]
-android-gradle-plugin = { module = "com.android.tools.build:gradle", version = "7.2.2" }
+android-gradle-plugin = { module = "com.android.tools.build:gradle", version = "7.4.1" }
 hilt-gradle-plugin = { module = "com.google.dagger:hilt-android-gradle-plugin", version.ref = "hilt" }
 kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 
