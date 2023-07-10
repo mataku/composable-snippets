@@ -12,13 +12,14 @@ kotest = "5.4.2"
 mockk = "1.12.8"
 
 [libraries]
-android-gradle-plugin = { module = "com.android.tools.build:gradle", version = "8.0.1" }
+android-gradle-plugin = { module = "com.android.tools.build:gradle", version = "8.0.2" }
 hilt-gradle-plugin = { module = "com.google.dagger:hilt-android-gradle-plugin", version.ref = "hilt" }
 kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 
 activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activity" }
 compose-bom = { module = "androidx.compose:compose-bom", version.ref = "compose" }
 compose-material = { module = "androidx.compose.material:material" }
+compose-material-icons-extended = { module = "androidx.compose.material:material-icons-extended" }
 compose-animation = { module = "androidx.compose.animation:animation" }
 compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
 compose-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version = "2.6.0" }
@@ -43,3 +44,5 @@ napier = { module = "io.github.aakira:napier", version = "2.6.1" }
 
 casa = { module = "com.google.android.catalog.framework:casa-ui", version.ref = "casa" }
 casa-processor = { module = "com.google.android.catalog.framework:casa-processor", version.ref = "casa" }
+
+kotlinx-collection = { module = "org.jetbrains.kotlinx:kotlinx-collections-immutable", version = "0.3.5"}

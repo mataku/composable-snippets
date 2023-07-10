@@ -13,7 +13,7 @@ class ComposeConventionPlugin : Plugin<Project> {
       val libs = extensions.getByType<VersionCatalogsExtension>().named("libs")
       if (target.name == "app") {
         extensions.configure<BaseAppModuleExtension> {
-          composeConfiguration(libs)
+          composeConfiguration(libs, target)
         }
       }
       dependencies {

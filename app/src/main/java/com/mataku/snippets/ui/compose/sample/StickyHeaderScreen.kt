@@ -5,7 +5,6 @@ package com.mataku.snippets.ui.compose.sample
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -76,11 +75,7 @@ fun StickyHeaderScreen() {
           selectedTabIndex = selectedTabIndex,
           modifier = Modifier
             .height(48.dp),
-          backgroundColor = if (isSystemInDarkTheme()) {
-            Color.Black
-          } else {
-            Color.White
-          },
+          backgroundColor = Color.LightGray,
           contentColor = MaterialTheme.colors.onPrimary,
         ) {
           repeat(5) {
@@ -92,7 +87,7 @@ fun StickyHeaderScreen() {
             ) {
               Text(
                 text = it.toString(),
-                color = MaterialTheme.colors.onPrimary
+                color = MaterialTheme.colors.surface
               )
             }
           }

@@ -29,6 +29,7 @@ dependencies {
   implementation(libs.coil.compose)
   implementation(libs.accompanist.pager)
   implementation(libs.constraintlayout.compose)
+  implementation(libs.compose.material.icons.extended)
 
   implementation(libs.napier)
 
@@ -38,6 +39,8 @@ dependencies {
 
   implementation(libs.casa)
   ksp(libs.casa.processor)
+
+  implementation(libs.kotlinx.collection)
 }
 
 repositories {
