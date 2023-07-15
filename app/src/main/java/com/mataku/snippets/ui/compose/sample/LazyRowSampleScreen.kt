@@ -33,6 +33,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.unit.dp
@@ -42,6 +43,7 @@ import com.mataku.snippets.ui.compose.component.TagChip
 import com.mataku.snippets.ui.compose.component.Title
 import com.mataku.snippets.ui.viewmodel.LazyRowViewModel
 import com.mataku.snippets.ui.viewmodel.TagState
+import com.mataku.snippets.ui.viewmodel.TagState3
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.coroutines.launch
 
@@ -96,6 +98,18 @@ fun LazyRowSampleScreen() {
         shouldShowTagList = uiState.shouldShowTagList
       )
     }
+
+    Title(
+      label = "Animate slideIn and fadeIn",
+      modifier = Modifier
+        .padding(16.dp)
+    )
+
+    ItemSlideInAndFadeInSample(
+      tagList = uiState.tagList3,
+      onTagClicked = viewModel::onTagSelected3,
+      modifier = Modifier
+    )
   }
 }
 
@@ -199,4 +213,41 @@ private fun ItemPlacementSample(
     horizontalArrangement = Arrangement.spacedBy(8.dp),
     contentPadding = PaddingValues(horizontal = 16.dp)
   )
+}
+
+@Composable
+private fun ItemSlideInAndFadeInSample(
+  tagList: ImmutableList<TagState3>,
+  onTagClicked: (TagState3) -> Unit,
+  modifier: Modifier
+) {
+  val tagListState = rememberLazyListState()
+  val coroutineScope = rememberCoroutineScope()
+  Row() {
+
+    LazyRow(
+      content = {
+        items(tagList, key = { tag -> tag.label.hashCode() }) { tag ->
+          TagChip(
+            label = tag.label,
+            selected = tag.selected,
+            modifier = Modifier
+              .animateItemPlacement()
+              .alpha(
+                if (tag.enabled) {
+                  1F
+                } else {
+                  0F
+                }
+              ),
+            onClick = {
+              onTagClicked.invoke(tag)
+            }
+          )
+        }
+      },
+      modifier = modifier,
+      state = tagListState
+    )
+  }
 }
