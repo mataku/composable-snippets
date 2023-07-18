@@ -59,11 +59,6 @@ fun LazyRowSampleScreen() {
   val uiState by viewModel.uiState.collectAsState()
 
   Column {
-    Title(
-      label = "Animate item placement",
-      modifier = Modifier
-        .padding(16.dp)
-    )
     ItemPlacementSample(
       tagList = uiState.tagListItemPlacement,
       onTagClicked = viewModel::onTagClickItemPlacement,
@@ -71,38 +66,13 @@ fun LazyRowSampleScreen() {
     )
     Spacer(modifier = Modifier.height(24.dp))
 
-    Title(
-      label = "Animate show/hide effects and slideIn",
-      modifier = Modifier
-        .padding(16.dp)
-    )
-
-    Row(
-      verticalAlignment = Alignment.CenterVertically,
-      modifier = Modifier
-        .height(40.dp)
-    ) {
-      if (uiState.canClearAllSelection) {
-        Spacer(modifier = Modifier.width(16.dp))
-        ClearSelectionButton(
-          onClear = viewModel::clearAllSelection
-        )
-      } else {
-        Spacer(modifier = Modifier.width(8.dp))
-      }
-
-      ItemFadeInOutSample(
-        tagList = uiState.tagList,
-        onTagClicked = viewModel::onTagClick,
-        modifier = Modifier,
-        shouldShowTagList = uiState.shouldShowTagList
-      )
-    }
-
-    Title(
-      label = "Animate slideIn and fadeIn",
-      modifier = Modifier
-        .padding(16.dp)
+    ItemFadeInOutSample(
+      tagList = uiState.tagList,
+      onTagClicked = viewModel::onTagClick,
+      modifier = Modifier,
+      shouldShowTagList = uiState.shouldShowTagList,
+      onClear = viewModel::clearAllSelection,
+      canClearAllSelection = uiState.canClearAllSelection
     )
 
     ItemSlideInAndFadeInSample(
@@ -141,42 +111,68 @@ private fun ClearSelectionButton(
 @Composable
 private fun ItemFadeInOutSample(
   tagList: ImmutableList<TagState>,
-  onTagClicked: (TagState) -> Unit,
   shouldShowTagList: Boolean,
+  canClearAllSelection: Boolean,
+  onTagClicked: (TagState) -> Unit,
+  onClear: () -> Unit,
   modifier: Modifier
 ) {
   val coroutineScope = rememberCoroutineScope()
   val tagListState = rememberLazyListState()
-  AnimatedVisibility(
-    visible = shouldShowTagList,
-    enter = fadeIn(animationSpec = tween(200)) + slideInHorizontally(
-      initialOffsetX = { fullWidth -> fullWidth }
-    ),
-    exit = fadeOut(animationSpec = tween(200))
-  ) {
-    LazyRow(
-      content = {
-        items(
-          tagList,
-          key = { it.label.hashCode() }
-        ) { tag ->
-          TagChip(
-            label = tag.label,
-            selected = tag.selected,
-            modifier = Modifier,
-            onClick = {
-              onTagClicked.invoke(tag)
-              coroutineScope.launch {
-                tagListState.scrollToItem(0)
-              }
-            },
-          )
-        }
-      },
-      modifier = modifier,
-      horizontalArrangement = Arrangement.spacedBy(8.dp),
-      contentPadding = PaddingValues(start = 8.dp, end = 16.dp)
+  Column(modifier = modifier) {
+    Title(
+      label = "Animate show/hide effects and slideIn",
+      modifier = Modifier
+        .padding(16.dp)
     )
+
+    Row(
+      verticalAlignment = Alignment.CenterVertically,
+      modifier = Modifier
+        .height(40.dp)
+    ) {
+      if (canClearAllSelection) {
+        Spacer(modifier = Modifier.width(16.dp))
+        ClearSelectionButton(
+          onClear = onClear
+        )
+      } else {
+        Spacer(modifier = Modifier.width(8.dp))
+      }
+
+
+      AnimatedVisibility(
+        visible = shouldShowTagList,
+        enter = fadeIn(animationSpec = tween(200)) + slideInHorizontally(
+          initialOffsetX = { fullWidth -> fullWidth }
+        ),
+        exit = fadeOut(animationSpec = tween(200))
+      ) {
+        LazyRow(
+          content = {
+            items(
+              tagList,
+              key = { it.label.hashCode() }
+            ) { tag ->
+              TagChip(
+                label = tag.label,
+                selected = tag.selected,
+                modifier = Modifier,
+                onClick = {
+                  onTagClicked.invoke(tag)
+                  coroutineScope.launch {
+                    tagListState.scrollToItem(0)
+                  }
+                },
+              )
+            }
+          },
+          modifier = modifier,
+          horizontalArrangement = Arrangement.spacedBy(8.dp),
+          contentPadding = PaddingValues(start = 8.dp, end = 16.dp)
+        )
+      }
+    }
   }
 }
 
@@ -188,31 +184,39 @@ private fun ItemPlacementSample(
 ) {
   val coroutineScope = rememberCoroutineScope()
   val tagListState = rememberLazyListState()
-  LazyRow(
-    content = {
-      items(
-        tagList,
-        key = { tag -> tag.label.hashCode() },
-      ) { tag ->
-        TagChip(
-          label = tag.label,
-          selected = tag.selected,
-          modifier = Modifier
-            .animateItemPlacement(),
-          onClick = {
-            onTagClicked.invoke(tag)
-            coroutineScope.launch {
-              tagListState.scrollToItem(0)
-            }
-          },
-        )
-      }
-    },
-    modifier = modifier,
-    state = tagListState,
-    horizontalArrangement = Arrangement.spacedBy(8.dp),
-    contentPadding = PaddingValues(horizontal = 16.dp)
-  )
+  Column(modifier = modifier) {
+    Title(
+      label = "Animate item placement",
+      modifier = Modifier
+        .padding(16.dp)
+    )
+
+    LazyRow(
+      content = {
+        items(
+          tagList,
+          key = { tag -> tag.label.hashCode() },
+        ) { tag ->
+          TagChip(
+            label = tag.label,
+            selected = tag.selected,
+            modifier = Modifier
+              .animateItemPlacement(),
+            onClick = {
+              onTagClicked.invoke(tag)
+              coroutineScope.launch {
+                tagListState.scrollToItem(0)
+              }
+            },
+          )
+        }
+      },
+      modifier = modifier,
+      state = tagListState,
+      horizontalArrangement = Arrangement.spacedBy(8.dp),
+      contentPadding = PaddingValues(horizontal = 16.dp)
+    )
+  }
 }
 
 @Composable
@@ -222,32 +226,38 @@ private fun ItemSlideInAndFadeInSample(
   modifier: Modifier
 ) {
   val tagListState = rememberLazyListState()
-  val coroutineScope = rememberCoroutineScope()
-  Row() {
-
-    LazyRow(
-      content = {
-        items(tagList, key = { tag -> tag.label.hashCode() }) { tag ->
-          TagChip(
-            label = tag.label,
-            selected = tag.selected,
-            modifier = Modifier
-              .animateItemPlacement()
-              .alpha(
-                if (tag.enabled) {
-                  1F
-                } else {
-                  0F
-                }
-              ),
-            onClick = {
-              onTagClicked.invoke(tag)
-            }
-          )
-        }
-      },
-      modifier = modifier,
-      state = tagListState
+  Column(modifier = modifier) {
+    Title(
+      label = "Animate slideIn and fadeIn",
+      modifier = Modifier
+        .padding(16.dp)
     )
+    Row {
+
+      LazyRow(
+        content = {
+          items(tagList, key = { tag -> tag.label.hashCode() }) { tag ->
+            TagChip(
+              label = tag.label,
+              selected = tag.selected,
+              modifier = Modifier
+                .animateItemPlacement()
+                .alpha(
+                  if (tag.enabled) {
+                    1F
+                  } else {
+                    0F
+                  }
+                ),
+              onClick = {
+                onTagClicked.invoke(tag)
+              }
+            )
+          }
+        },
+        modifier = modifier,
+        state = tagListState
+      )
+    }
   }
 }
