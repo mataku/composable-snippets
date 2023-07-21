@@ -19,7 +19,7 @@ dependencies {
   implementation(libs.activity.ktx)
   implementation(libs.material)
   implementation(libs.coroutines)
-  implementation("androidx.core:core-ktx:1.9.0")
+  implementation(libs.androidx.core)
 
   implementation(libs.activity.compose)
   implementation(libs.compose.ui.tooling)
@@ -28,6 +28,7 @@ dependencies {
   implementation(libs.compose.navigation)
   implementation(libs.coil.compose)
   implementation(libs.accompanist.pager)
+  implementation(libs.accompanist.webview)
   implementation(libs.constraintlayout.compose)
   implementation(libs.compose.material.icons.extended)
 
@@ -41,6 +42,7 @@ dependencies {
   ksp(libs.casa.processor)
 
   implementation(libs.kotlinx.collection)
+  implementation(libs.webkit)
 }
 
 repositories {
