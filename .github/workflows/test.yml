@@ -9,32 +9,38 @@ concurrency:
   group: ${{ github.head_ref }}
   cancel-in-progress: true
 
+env:
+  FASTLANE_HIDE_CHANGELOG: true
+  GRADLE_OPTS: -Dorg.gradle.jvmargs="-Xmx6g -XX:+UseParallelGC -XX:MaxMetaspaceSize=2g"
+
 jobs:
-  assembleDebug:
+  build:
     runs-on: ubuntu-latest
     timeout-minutes: 15
 
     steps:
-      - uses: actions/checkout@v3
-      - name: set up JDK
-        uses: actions/setup-java@v3
-        with:
-          distribution: 'zulu'
-          java-version: 11
-      - name: Cache gradle dir
-        uses: actions/cache@v3
-        with:
-          path: |
-            ~/.gradle/caches
-            ~/.gradle/wrapper
-          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
-          restore-keys: |
-            ${{ runner.os }}-gradle-
-      - name: Setup
-        env:
-          GOOGLE_SERVICES_JSON: ${{ secrets.GOOGLE_SERVICES_JSON }}
-        run: |
-          echo $GOOGLE_SERVICES_JSON > app/google-services.json
-      - name: Run assembleDebug
-        run: |
-          ./gradlew assembleDebug
+    - uses: actions/checkout@v3
+    - name: set up JDK
+      uses: actions/setup-java@v3
+      with:
+        distribution: zulu
+        java-version: 17
+    - name: Cache gradle dir
+      uses: actions/cache@v3
+      if: ${{ !startsWith(github.head_ref, 'dependabot') }}
+      with:
+        path: |
+          ~/.gradle/caches
+          ~/.gradle/wrapper
+        key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+        restore-keys: |
+          ${{ runner.os }}-gradle-
+    - uses: ruby/setup-ruby@v1
+      with:
+        bundler-cache: true
+    - name: Build with Gradle
+      env:
+        GOOGLE_SERVICES_JSON: ${{ secrets.GOOGLE_SERVICES_JSON }}
+      run: |
+        bundle exec fastlane android setup_for_ci
+        bundle exec fastlane android build
