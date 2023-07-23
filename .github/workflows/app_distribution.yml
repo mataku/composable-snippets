@@ -1,0 +1,57 @@
+name: Deploy app to firebase app distribution
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: "Branch"
+        required: true
+        default: "develop"
+      release_notes:
+        description: "Release notes"
+        required: false
+
+env:
+  FASTLANE_HIDE_CHANGELOG: true
+
+jobs:
+  deploy-app-to-app-distribution:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      id-token: write
+    steps:
+    - id: auth
+      uses: google-github-actions/auth@v0
+      with:
+        create_credentials_file: true
+        workload_identity_provider: ${{ secrets.WORKFLOW_IDENTITY_PROVIDER }}
+        service_account: ${{ secrets.GOOGLE_SERVICE_ACCOUNT }}
+    - uses: actions/checkout@v3
+      with:
+        ref: ${{ github.event.inputs.branch }}
+    - name: set up JDK
+      uses: actions/setup-java@v3
+      with:
+        distribution: zulu
+        java-version: 17
+    - name: Cache gradle dir
+      uses: actions/cache@v3
+      with:
+        path: |
+          ~/.gradle/caches
+          ~/.gradle/wrapper
+        key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+        restore-keys: |
+          ${{ runner.os }}-gradle-
+    - uses: ruby/setup-ruby@v1
+      with:
+        bundler-cache: true
+    - name: Deploy to Firebase App Distribution
+      env:
+        RELEASE_NOTES: ${{ github.event.inputs.release_notes }}
+        GOOGLE_SERVICES_JSON: ${{ secrets.GOOGLE_SERVICES_JSON }}
+        FIREBASE_APP_ID: ${{ secrets.FIREBASE_APP_ID }}
+      run: |
+        bundle exec fastlane android setup_for_ci
+        bundle exec fastlane android deploy_to_firebase_app_distribution

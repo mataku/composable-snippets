@@ -24,7 +24,6 @@ class ApplicationConventionPlugin : Plugin<Project> {
         buildTypes {
           getByName("debug") {
             isMinifyEnabled = false
-            applicationIdSuffix = ".dev"
             signingConfig = signingConfigs.getByName("debug")
             isDebuggable = true
           }

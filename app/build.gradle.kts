@@ -5,6 +5,7 @@ plugins {
   id("com.google.dagger.hilt.android")
   id("org.jetbrains.kotlin.android")
   id("com.google.devtools.ksp") version ("1.8.10-1.0.9")
+  id("com.google.gms.google-services")
 }
 
 android {
@@ -43,6 +44,8 @@ dependencies {
 
   implementation(libs.kotlinx.collection)
   implementation(libs.webkit)
+
+  implementation(platform(libs.firebase.bom))
 }
 
 repositories {
