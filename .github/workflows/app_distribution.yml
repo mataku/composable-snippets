@@ -20,16 +20,17 @@ jobs:
     timeout-minutes: 10
     permissions:
       id-token: write
+      contents: read
     steps:
+    - uses: actions/checkout@v3
+      with:
+        ref: ${{ github.event.inputs.branch }}
     - id: auth
-      uses: google-github-actions/auth@v0
+      uses: google-github-actions/auth@v1
       with:
         create_credentials_file: true
         workload_identity_provider: ${{ secrets.WORKFLOW_IDENTITY_PROVIDER }}
         service_account: ${{ secrets.GOOGLE_SERVICE_ACCOUNT }}
-    - uses: actions/checkout@v3
-      with:
-        ref: ${{ github.event.inputs.branch }}
     - name: set up JDK
       uses: actions/setup-java@v3
       with:
@@ -47,11 +48,15 @@ jobs:
     - uses: ruby/setup-ruby@v1
       with:
         bundler-cache: true
+    - name: Prepare release notes
+      run: |
+        echo "${{ github.event.inputs.release_notes }}" >> release_notes.txt
+        echo "${{ github.event.inputs.branch }}@$(git rev-parse HEAD)" >> release_notes.txt
     - name: Deploy to Firebase App Distribution
       env:
-        RELEASE_NOTES: ${{ github.event.inputs.release_notes }}
         GOOGLE_SERVICES_JSON: ${{ secrets.GOOGLE_SERVICES_JSON }}
         FIREBASE_APP_ID: ${{ secrets.FIREBASE_APP_ID }}
       run: |
+        npm install -g firebase-tools
         bundle exec fastlane android setup_for_ci
         bundle exec fastlane android deploy_to_firebase_app_distribution
