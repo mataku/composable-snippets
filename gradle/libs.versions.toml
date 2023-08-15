@@ -1,7 +1,7 @@
 [versions]
 activity = "1.6.1"
 accompanist = "0.30.1"
-androidx-core = "1.9.0"
+androidx-core = "1.10.1"
 casa = "0.4.3"
 compose = "2023.03.00"
 coroutines = "1.6.4"
