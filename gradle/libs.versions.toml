@@ -10,6 +10,7 @@ ktor = "2.1.1"
 kotlin = "1.8.10"
 kotlin-compiler-extension = "1.4.3"
 kotest = "5.4.2"
+ksp = "1.8.10-1.0.9"
 mockk = "1.12.8"
 webkit = "1.7.0"
 

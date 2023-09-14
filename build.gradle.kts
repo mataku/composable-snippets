@@ -16,6 +16,7 @@ buildscript {
 
 plugins {
   id("com.google.gms.google-services") version "4.3.15" apply false
+  id("com.google.devtools.ksp") version libs.versions.ksp.get() apply false
 }
 
 allprojects {
