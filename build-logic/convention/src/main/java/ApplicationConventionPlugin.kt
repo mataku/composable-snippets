@@ -29,7 +29,7 @@ class ApplicationConventionPlugin : Plugin<Project> {
           }
         }
         kotlinConfiguration()
-        packagingOptions {
+        packaging {
           val excludePatterns = listOf(
             "META-INF/atomicfu.kotlin_module",
             "META-INF/kotlinx-coroutines-io.kotlin_module",
