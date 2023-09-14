@@ -1,7 +1,6 @@
-@file:OptIn(ExperimentalPagerApi::class)
-
 package com.mataku.snippets.ui.compose.component
 
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -14,6 +13,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -30,14 +31,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.google.accompanist.pager.ExperimentalPagerApi
-import com.google.accompanist.pager.HorizontalPager
-import com.google.accompanist.pager.rememberPagerState
 import com.mataku.snippets.R
 import com.mataku.snippets.entity.Banner
 import com.mataku.snippets.ui.compose.preview.MultiThemePreview
 
 // Looping HorizontalPager
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun LoopingHorizontalBannerPagerSample(
   modifier: Modifier = Modifier,
@@ -52,9 +51,9 @@ fun LoopingHorizontalBannerPagerSample(
   Column(modifier = Modifier.fillMaxSize()) {
     HorizontalPager(
       state = pagerState,
-      count = scrollableList.size,
       modifier = modifier,
-      content = { index ->
+      pageCount = scrollableList.size,
+      pageContent = { index ->
         val banner = scrollableList[index]
         Column(
           modifier = Modifier.fillMaxWidth(),
