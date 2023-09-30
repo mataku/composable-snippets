@@ -4,9 +4,12 @@ on:
   pull_request:
     branches:
       - '**'
+  push:
+    branches:
+      - develop
 
 concurrency:
-  group: ${{ github.head_ref }}
+  group: ${{ github.head_ref || 'develop' }}
   cancel-in-progress: true
 
 env:
