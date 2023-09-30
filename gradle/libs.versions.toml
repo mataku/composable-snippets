@@ -15,7 +15,7 @@ mockk = "1.12.8"
 webkit = "1.7.0"
 
 [libraries]
-android-gradle-plugin = { module = "com.android.tools.build:gradle", version = "8.0.2" }
+android-gradle-plugin = { module = "com.android.tools.build:gradle", version = "8.1.2" }
 hilt-gradle-plugin = { module = "com.google.dagger:hilt-android-gradle-plugin", version.ref = "hilt" }
 kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 
