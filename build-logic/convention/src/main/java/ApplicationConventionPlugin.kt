@@ -15,7 +15,11 @@ class ApplicationConventionPlugin : Plugin<Project> {
       }
 
       extensions.configure<BaseAppModuleExtension> {
-        defaultConfig.targetSdk = 31
+        compileSdk = 34
+        defaultConfig {
+          minSdk = 29
+        }
+        defaultConfig.targetSdk = 34
         signingConfigs {
           getByName("debug") {
             storeFile = file("../debug.keystore")
