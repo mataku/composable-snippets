@@ -47,12 +47,16 @@ fun LoopingHorizontalBannerPagerSample(
   } else {
     bannerList
   }
-  val pagerState = rememberPagerState(initialPage = scrollableList.size / 2)
+  val pagerState = rememberPagerState(
+    initialPage = scrollableList.size / 2,
+    pageCount = {
+      scrollableList.size
+    }
+  )
   Column(modifier = Modifier.fillMaxSize()) {
     HorizontalPager(
       state = pagerState,
       modifier = modifier,
-      pageCount = scrollableList.size,
       pageContent = { index ->
         val banner = scrollableList[index]
         Column(
