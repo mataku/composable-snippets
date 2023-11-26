@@ -28,7 +28,6 @@ dependencies {
   implementation(libs.compose.material)
   implementation(libs.compose.navigation)
   implementation(libs.coil.compose)
-  implementation(libs.accompanist.pager)
   implementation(libs.accompanist.webview)
   implementation(libs.constraintlayout.compose)
   implementation(libs.compose.material.icons.extended)
