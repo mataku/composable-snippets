@@ -1,6 +1,6 @@
 [versions]
 activity = "1.8.1"
-android-gradle-plugin = "8.1.4"
+android-gradle-plugin = "8.2.0"
 accompanist = "0.30.1"
 androidx-core = "1.12.0"
 casa = "0.4.3"
