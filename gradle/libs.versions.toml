@@ -1,7 +1,7 @@
 [versions]
 activity = "1.8.1"
 android-gradle-plugin = "8.2.0"
-accompanist = "0.30.1"
+accompanist = "0.32.0"
 androidx-core = "1.12.0"
 casa = "0.4.3"
 compose = "2023.03.00"
