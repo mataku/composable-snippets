@@ -32,7 +32,7 @@ jobs:
         workload_identity_provider: ${{ secrets.WORKFLOW_IDENTITY_PROVIDER }}
         service_account: ${{ secrets.GOOGLE_SERVICE_ACCOUNT }}
     - name: set up JDK
-      uses: actions/setup-java@v3
+      uses: actions/setup-java@v4
       with:
         distribution: zulu
         java-version: 17
