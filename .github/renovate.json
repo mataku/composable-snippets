@@ -10,7 +10,8 @@
     "fastlane",
     "org.jetbrains.kotlin.jvm",
     "com.google.devtools.ksp",
-    "casa"
+    "casa",
+    "fastlane-plugin-firebase_app_distribution"
   ],
   "prConcurrentLimit": 5,
   "rebaseWhen": "never"
