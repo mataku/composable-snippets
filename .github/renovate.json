@@ -5,9 +5,12 @@
   "ignoreDeps": [
     "androidx.compose:compose-bom",
     "com.google.accompanist:accompanist-pager",
+    "com.google.accompanist:accompanist-webview",
     "org.jetbrains.kotlin:kotlin-gradle-plugin",
     "fastlane",
-    "org.jetbrains.kotlin.jvm"
+    "org.jetbrains.kotlin.jvm",
+    "com.google.devtools.ksp",
+    "casa"
   ],
   "prConcurrentLimit": 5,
   "rebaseWhen": "never"
