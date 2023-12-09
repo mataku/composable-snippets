@@ -36,6 +36,8 @@ local.properties
 .idea/kotlinc.xml
 !.idea/codeStyles/
 .idea/inspectionProfiles/
+.idea/deploymentTargetDropDown.xml
+.idea/migrations.xml
 
 *.iml
 .env
