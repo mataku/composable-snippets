@@ -35,8 +35,8 @@ dependencies {
   implementation(libs.napier)
 
   implementation(libs.hilt.android)
-  kapt(libs.hilt.compiler)
-  kapt(libs.hilt.android.compiler)
+  ksp(libs.hilt.compiler)
+  ksp(libs.hilt.android.compiler)
 
   implementation(libs.casa)
   ksp(libs.casa.processor)
