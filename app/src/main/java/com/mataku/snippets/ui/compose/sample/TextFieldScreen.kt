@@ -276,7 +276,7 @@ private fun TextCountFieldSample(
           text = text.length.toString(),
           color = Colors.textSecondary,
           modifier = Modifier
-            .padding(end = 12.dp, bottom = 8.dp)
+            .padding(end = 16.dp, bottom = 12.dp)
             .constrainAs(textCounter) {
               top.linkTo(textField.bottom)
               centerHorizontallyTo(parent)
