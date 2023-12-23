@@ -49,7 +49,7 @@ import com.mataku.snippets.ui.compose.component.Title
   name = "TextField sample",
   description = "text field",
   tags = ["TextField"],
-  sourcePath = "https://github.com/mataku/composable-snippets/blob/develop/app/src/main/java/com/mataku/jetpackcomposesandbox/ui/compose/sample/InputScreen.kt"
+  sourcePath = "https://github.com/mataku/composable-snippets/blob/develop/app/src/main/java/com/mataku/jetpackcomposesandbox/ui/compose/sample/TextFieldScreen.kt"
 )
 @Composable
 fun TextFieldScreen() {
@@ -116,7 +116,7 @@ fun TextFieldScreen() {
 
 @Preview(showBackground = true)
 @Composable
-private fun InputScreenPreview() {
+private fun TextFieldScreenPreview() {
   MaterialTheme {
     Surface {
       TextFieldScreen()
