@@ -47,6 +47,7 @@ import com.mataku.snippets.ui.viewmodel.TagState3
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.coroutines.launch
 
+// TODO: refactor animation
 @Sample(
   name = "LazyRow",
   description = "LazyRow sample",
@@ -140,7 +141,6 @@ private fun ItemFadeInOutSample(
         Spacer(modifier = Modifier.width(8.dp))
       }
 
-
       AnimatedVisibility(
         visible = shouldShowTagList,
         enter = fadeIn(animationSpec = tween(200)) + slideInHorizontally(
@@ -169,7 +169,8 @@ private fun ItemFadeInOutSample(
           },
           modifier = modifier,
           horizontalArrangement = Arrangement.spacedBy(8.dp),
-          contentPadding = PaddingValues(start = 8.dp, end = 16.dp)
+          contentPadding = PaddingValues(start = 8.dp, end = 16.dp),
+          state = tagListState
         )
       }
     }
@@ -219,6 +220,7 @@ private fun ItemPlacementSample(
   }
 }
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 private fun ItemSlideInAndFadeInSample(
   tagList: ImmutableList<TagState3>,
@@ -226,6 +228,7 @@ private fun ItemSlideInAndFadeInSample(
   modifier: Modifier
 ) {
   val tagListState = rememberLazyListState()
+  val coroutineScope = rememberCoroutineScope()
   Column(modifier = modifier) {
     Title(
       label = "Animate slideIn and fadeIn",
@@ -233,7 +236,6 @@ private fun ItemSlideInAndFadeInSample(
         .padding(16.dp)
     )
     Row {
-
       LazyRow(
         content = {
           items(tagList, key = { tag -> tag.label.hashCode() }) { tag ->
@@ -251,6 +253,9 @@ private fun ItemSlideInAndFadeInSample(
                 ),
               onClick = {
                 onTagClicked.invoke(tag)
+                coroutineScope.launch {
+                  tagListState.scrollToItem(0)
+                }
               }
             )
           }
