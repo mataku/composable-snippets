@@ -52,8 +52,8 @@ jobs:
           .gradle
           ~/.gradle/caches/build-cache-*
           ~/.gradle/caches/[0-9]*.* # TODO: specify latest only
-          key: gradle-build-cache-${{ github.sha }}
-          restore-keys: gradle-build-cache-
+        key: gradle-build-cache-${{ github.sha }}
+        restore-keys: gradle-build-cache-
     - uses: ruby/setup-ruby@v1
       with:
         bundler-cache: true
