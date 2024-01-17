@@ -29,13 +29,13 @@ jobs:
         distribution: zulu
         java-version: 17
     - name: Cache gradle
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         path: |
           ~/.gradle/wrapper
         key: gradle-wrapper-${{ hashFiles('gradle/wrapper/gradle-wrapper.properties') }}
     - name: Cache dependencies
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       if: ${{ !startsWith(github.head_ref, 'dependabot') }}
       with:
         path: |
@@ -46,7 +46,7 @@ jobs:
         restore-keys: |
           gradle-dependencies-
     - name: Cache build results
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         path: |
           .gradle
