@@ -52,7 +52,7 @@ hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", ve
 coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
 material = { module = "com.google.android.material:material", version = "1.11.0" }
 
-napier = { module = "io.github.aakira:napier", version = "2.7.0" }
+napier = { module = "io.github.aakira:napier", version = "2.7.1" }
 
 casa = { module = "com.google.android.catalog.framework:casa-ui", version.ref = "casa" }
 casa-processor = { module = "com.google.android.catalog.framework:casa-processor", version.ref = "casa" }
