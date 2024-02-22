@@ -52,7 +52,7 @@ import kotlinx.coroutines.launch
   name = "LazyRow",
   description = "LazyRow sample",
   tags = ["LazyRow", "Animation"],
-  sourcePath = "https://github.com/mataku/composable-snippets/blob/develop/app/src/main/java/com/mataku/jetpackcomposesandbox/ui/compose/sample/LazyRowScreenScreen.kt"
+  sourcePath = "https://github.com/mataku/composable-snippets/blob/develop/app/src/main/java/com/mataku/jetpackcomposesandbox/ui/compose/sample/LazyRowSampleScreen.kt"
 )
 @Composable
 fun LazyRowSampleScreen() {
