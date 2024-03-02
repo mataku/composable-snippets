@@ -14,5 +14,11 @@
     "fastlane-plugin-firebase_app_distribution"
   ],
   "prConcurrentLimit": 5,
-  "rebaseWhen": "never"
+  "rebaseWhen": "never",
+  "packageRules": [
+    {
+      "matchUpdateTypes": ["minor", "patch", "major"],
+      "automerge": true
+    }
+  ]
 }
