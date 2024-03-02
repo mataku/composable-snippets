@@ -17,7 +17,7 @@
   "rebaseWhen": "never",
   "packageRules": [
     {
-      "matchUpdateTypes": ["minor", "patch", "major"],
+      "matchUpdateTypes": ["minor", "patch"],
       "automerge": true
     }
   ]
