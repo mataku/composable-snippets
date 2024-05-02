@@ -50,7 +50,7 @@ hilt-android-compiler = { module = "androidx.hilt:hilt-compiler", version = "1.2
 hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version = "1.2.0" }
 
 coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
-material = { module = "com.google.android.material:material", version = "1.11.0" }
+material = { module = "com.google.android.material:material", version = "1.12.0" }
 
 napier = { module = "io.github.aakira:napier", version = "2.7.1" }
 
