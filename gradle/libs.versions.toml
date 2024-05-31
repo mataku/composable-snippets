@@ -18,7 +18,7 @@ webkit = "1.11.0"
 android-application = { id = "com.android.application", version.ref = "android-gradle-plugin" }
 android-library = { id = "com.android.library", version.ref = "android-gradle-plugin" }
 dagger-hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
-google-services = { id = "com.google.gms.google-services", version = "4.4.1" }
+google-services = { id = "com.google.gms.google-services", version = "4.4.2" }
 kotlin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 
