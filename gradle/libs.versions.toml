@@ -60,4 +60,4 @@ casa-processor = { module = "com.google.android.catalog.framework:casa-processor
 kotlinx-collection = { module = "org.jetbrains.kotlinx:kotlinx-collections-immutable", version = "0.3.7" }
 webkit = { module = "androidx.webkit:webkit", version.ref = "webkit" }
 
-firebase-bom = { module = "com.google.firebase:firebase-bom", version = "33.1.0" }
+firebase-bom = { module = "com.google.firebase:firebase-bom", version = "33.1.1" }
