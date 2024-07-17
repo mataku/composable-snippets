@@ -39,7 +39,7 @@ constraintlayout-compose = { module = "androidx.constraintlayout:constraintlayou
 accompanist-webview = { module = "com.google.accompanist:accompanist-webview", version.ref = "accompanist" }
 
 activity-ktx = { module = "androidx.activity:activity-ktx", version.ref = "activity" }
-coil-compose = { module = "io.coil-kt:coil-compose", version = "2.6.0" }
+coil-compose = { module = "io.coil-kt:coil-compose", version = "2.7.0" }
 
 androidx-core = { module = "androidx.core:core-ktx", version.ref = "androidx-core" }
 
