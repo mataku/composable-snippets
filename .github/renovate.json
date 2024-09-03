@@ -21,5 +21,8 @@
       "automerge": true,
       "platformAutomerge": true
     }
-  ]
+  ],
+  "ruby-version": {
+    "enabled": false
+  }
 }
