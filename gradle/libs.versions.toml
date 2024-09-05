@@ -57,7 +57,7 @@ napier = { module = "io.github.aakira:napier", version = "2.7.1" }
 casa = { module = "com.google.android.catalog.framework:casa-ui", version.ref = "casa" }
 casa-processor = { module = "com.google.android.catalog.framework:casa-processor", version.ref = "casa" }
 
-kotlinx-collection = { module = "org.jetbrains.kotlinx:kotlinx-collections-immutable", version = "0.3.7" }
+kotlinx-collection = { module = "org.jetbrains.kotlinx:kotlinx-collections-immutable", version = "0.3.8" }
 webkit = { module = "androidx.webkit:webkit", version.ref = "webkit" }
 
 firebase-bom = { module = "com.google.firebase:firebase-bom", version = "33.2.0" }
