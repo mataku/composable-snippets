@@ -1,5 +1,5 @@
 [versions]
-activity = "1.9.2"
+activity = "1.9.3"
 android-gradle-plugin = "8.7.1"
 accompanist = "0.34.0"
 androidx-core = "1.13.1"
