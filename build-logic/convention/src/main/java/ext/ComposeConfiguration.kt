@@ -1,51 +1,31 @@
 package ext
 
-import com.android.build.api.dsl.CommonExtension
+import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
 import org.gradle.api.Project
-import org.gradle.api.artifacts.VersionCatalog
-import org.gradle.api.plugins.ExtensionAware
-import org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions
-import java.io.File
+import org.gradle.kotlin.dsl.configure
+import org.gradle.kotlin.dsl.getByType
+import org.jetbrains.kotlin.compose.compiler.gradle.ComposeCompilerGradlePluginExtension
 
-fun CommonExtension<*, *, *, *, *, *>.composeConfiguration(
-  libs: VersionCatalog,
-  currentProject: Project
-) {
-  buildFeatures {
-    compose = true
-  }
-  composeOptions {
-    kotlinCompilerExtensionVersion =
-      libs.findVersion("compose.compiler.extension").get().toString()
+fun Project.composeConfiguration() {
+  with(pluginManager) {
+    apply("org.jetbrains.kotlin.plugin.compose")
   }
 
-  (this as ExtensionAware).extensions.configure<KotlinJvmOptions>("kotlinOptions") {
-    freeCompilerArgs = freeCompilerArgs + composeCompilerParameters(
-      currentProject
-    )
-  }
-}
+  if (this.name == "app") {
+    extensions.configure<BaseAppModuleExtension> {
+      buildFeatures {
+        compose = true
+      }
 
-private fun composeCompilerParameters(currentProject: Project): List<String> {
-  val compilerParameters = mutableListOf<String>()
-  val composeMetricsEnabled =
-    currentProject.rootProject.providers.gradleProperty("snippets.composeCompilerMetrics").orNull == "true"
-  if (composeMetricsEnabled) {
-    val metricsFolder = File(currentProject.buildDir, "compose_metrics")
-    compilerParameters.add("-P")
-    compilerParameters.add(
-      "plugin:androidx.compose.compiler.plugins.kotlin:metricsDestination=" + metricsFolder.absolutePath,
-    )
-  }
+      with(extensions.getByType<ComposeCompilerGradlePluginExtension>()) {
+        val composeReportEnabled =
+          rootProject.providers.gradleProperty("composeCompilerReports").orNull == "true"
 
-  val composeReportEnabled =
-    currentProject.rootProject.providers.gradleProperty("snippets.composeCompilerReports").orNull == "true"
-  if (composeReportEnabled) {
-    val reportsFolder = File(currentProject.buildDir, "compose_reports")
-    compilerParameters.add("-P")
-    compilerParameters.add(
-      "plugin:androidx.compose.compiler.plugins.kotlin:reportsDestination=" + reportsFolder.absolutePath,
-    )
+        if (composeReportEnabled) {
+          reportsDestination.set(layout.buildDirectory.dir("compose_reports"))
+          metricsDestination.set(layout.buildDirectory.dir("compose_metrics"))
+        }
+      }
+    }
   }
-  return compilerParameters.toList()
 }
