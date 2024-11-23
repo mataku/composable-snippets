@@ -38,6 +38,9 @@ local.properties
 .idea/inspectionProfiles/
 .idea/deploymentTargetDropDown.xml
 .idea/migrations.xml
+.idea/deploymentTargetSelector.xml
+.idea/material_theme_project_new.xml
+.idea/runConfigurations.xml
 
 *.iml
 .env
