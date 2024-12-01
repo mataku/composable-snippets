@@ -1,6 +1,5 @@
 package com.mataku.snippets.ui.compose.sample
 
-import android.text.style.TtsSpan.TimeBuilder
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
@@ -47,7 +46,7 @@ import kotlinx.coroutines.launch
   name = "Scale animation sample",
   description = "Size scaling",
   tags = ["Scale animation"],
-  sourcePath = "https://github.com/mataku/composable-snippets/blob/develop/app/src/main/java/com/mataku/jetpackcomposesandbox/ui/compose/sample/DragAndDropScreen.kt"
+  sourcePath = "https://github.com/mataku/composable-snippets/blob/develop/app/src/main/java/com/mataku/snippets/ui/compose/sample/DragAndDropScreen.kt"
 )
 @Composable
 fun ScaleAnimationScreen() {

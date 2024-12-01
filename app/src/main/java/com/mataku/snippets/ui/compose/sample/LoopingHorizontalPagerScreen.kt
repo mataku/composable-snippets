@@ -14,7 +14,7 @@ import com.mataku.snippets.ui.compose.component.LoopingHorizontalBannerPagerSamp
   name = "Looping HorizontalPager",
   description = "Infinite HorizontalPager looping",
   tags = ["HorizontalPager"],
-  sourcePath = "https://github.com/mataku/composable-snippets/blob/develop/app/src/main/java/com/mataku/jetpackcomposesandbox/ui/compose/sample/LoopingHorizontalPagerScreen.kt"
+  sourcePath = "https://github.com/mataku/composable-snippets/blob/develop/app/src/main/java/com/mataku/snippets/ui/compose/sample/LoopingHorizontalPagerScreen.kt"
 )
 @Composable
 fun LoopingHorizontalPagerScreen() {

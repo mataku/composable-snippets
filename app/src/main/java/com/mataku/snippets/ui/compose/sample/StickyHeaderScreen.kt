@@ -41,7 +41,7 @@ import com.mataku.snippets.ui.Colors
   name = "Sticky header sample",
   description = "Sticky header with LazyList",
   tags = ["Sticky header", "LazyColumn"],
-  sourcePath = "https://github.com/mataku/composable-snippets/blob/develop/app/src/main/java/com/mataku/jetpackcomposesandbox/ui/compose/sample/StickyHeaderScreen.kt"
+  sourcePath = "https://github.com/mataku/composable-snippets/blob/develop/app/src/main/java/com/mataku/snippets/ui/compose/sample/StickyHeaderScreen.kt"
 )
 @Composable
 fun StickyHeaderScreen() {
