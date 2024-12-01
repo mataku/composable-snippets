@@ -126,7 +126,6 @@ private fun getLocationAddress(
         location.longitude,
         1
       ) { addresses ->
-        println("MATAKUDEBUG addresses $addresses")
         if (addresses.isNotEmpty()) {
           onGetAddress.invoke(addresses[0].getAddressLine(0))
         }
