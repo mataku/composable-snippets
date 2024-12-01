@@ -50,6 +50,10 @@ fun ImageUploadScreen() {
     mutableStateOf(null)
   }
 
+  var imageUriList: List<Uri> by remember {
+    mutableStateOf(emptyList())
+  }
+
   val context = LocalContext.current
   val hasCameraPermission = remember {
     mutableStateOf(
@@ -78,6 +82,12 @@ fun ImageUploadScreen() {
     contract = ActivityResultContracts.GetContent()
   ) { uri: Uri? ->
     imageUri = uri
+  }
+
+  val imagesGalleryLauncher = rememberLauncherForActivityResult(
+    contract = ActivityResultContracts.GetMultipleContents()
+  ) { uriList: List<Uri> ->
+    imageUriList = uriList
   }
 
   val screenWidth = LocalConfiguration.current.screenWidthDp
@@ -156,7 +166,7 @@ fun ImageUploadScreen() {
   }
 }
 
-fun createImageFile(context: Context): File {
+private fun createImageFile(context: Context): File {
   val storageDir = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
   return File.createTempFile(
     "image_upload_${System.currentTimeMillis()}",
