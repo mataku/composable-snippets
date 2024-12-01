@@ -62,3 +62,5 @@ kotlinx-collection = { module = "org.jetbrains.kotlinx:kotlinx-collections-immut
 webkit = { module = "androidx.webkit:webkit", version.ref = "webkit" }
 
 firebase-bom = { module = "com.google.firebase:firebase-bom", version = "33.6.0" }
+
+play-services-location = { module = "com.google.android.gms:play-services-location", version = "21.3.0" }

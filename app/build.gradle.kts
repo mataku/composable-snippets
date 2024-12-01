@@ -45,6 +45,8 @@ dependencies {
   implementation(libs.webkit)
 
   implementation(platform(libs.firebase.bom))
+
+  implementation(libs.play.services.location)
 }
 
 repositories {
