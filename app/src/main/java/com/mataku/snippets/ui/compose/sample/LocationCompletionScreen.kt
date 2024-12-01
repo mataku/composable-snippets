@@ -32,6 +32,10 @@ import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import java.util.Locale
 
+/*
+   TODO: Show button to go to app settings after user denied location permission twice or over
+ */
+
 @Sample(
   name = "Location Completion",
   description = "Get address from current location",
