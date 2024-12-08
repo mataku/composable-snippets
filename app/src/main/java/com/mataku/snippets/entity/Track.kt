@@ -10,9 +10,19 @@ data class Track(
 ) {
   companion object {
     fun generateList(): List<Track> {
-      return List(100) {
+      return List(10) { index ->
         Track(
-          name = LoremIpsum(4).values.joinToString(),
+          name = "$index: ${LoremIpsum(4).values.joinToString()}",
+          artistName = LoremIpsum(8).values.joinToString(),
+          imageResId = R.drawable.kota
+        )
+      }
+    }
+
+    fun generateList2(): List<Track> {
+      return List(10) { index ->
+        Track(
+          name = "second $index: ${LoremIpsum(4).values.joinToString()}",
           artistName = LoremIpsum(8).values.joinToString(),
           imageResId = R.drawable.kota
         )

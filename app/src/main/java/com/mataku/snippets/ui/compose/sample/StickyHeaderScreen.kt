@@ -15,21 +15,16 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Tab
-import androidx.compose.material.TabRow
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -45,11 +40,8 @@ import com.mataku.snippets.ui.Colors
 )
 @Composable
 fun StickyHeaderScreen() {
-  var selectedTabIndex by remember {
-    mutableStateOf(0)
-  }
-
   val itemList = Track.generateList()
+  val itemList2 = Track.generateList2()
 
   LazyColumn(
     content = {
@@ -70,34 +62,56 @@ fun StickyHeaderScreen() {
           )
         }
       }
-      stickyHeader {
-        TabRow(
-          selectedTabIndex = selectedTabIndex,
+      stickyHeader(
+        key = "stickyHeader_1",
+      ) {
+        Text(
+          text = "stickyHeader 1",
           modifier = Modifier
-            .height(48.dp),
-          backgroundColor = Color.LightGray,
-          contentColor = MaterialTheme.colors.onPrimary,
-        ) {
-          repeat(5) {
-            Tab(
-              selected = selectedTabIndex == it,
-              onClick = {
-                selectedTabIndex = it
-              },
-            ) {
-              Text(
-                text = it.toString(),
-                color = MaterialTheme.colors.surface
-              )
-            }
-          }
-        }
+            .fillMaxWidth()
+            .background(
+              color = Color.LightGray
+            )
+            .padding(
+              16.dp
+            ),
+          fontSize = 18.sp,
+          fontWeight = FontWeight.Medium
+        )
       }
-      items(itemList) {
-        TrackContent(track = it)
+      itemsIndexed(
+        itemList, key = { index, _ ->
+          "track1_$index"
+        }
+      ) { _, item ->
+        TrackContent(track = item)
         Divider()
       }
-
+      stickyHeader(
+        key = "stickyHeader_2",
+      ) {
+        Text(
+          text = "stickyHeader 2",
+          modifier = Modifier
+            .fillMaxWidth()
+            .background(
+              color = Color.LightGray
+            )
+            .padding(
+              16.dp
+            ),
+          fontSize = 18.sp,
+          fontWeight = FontWeight.Bold
+        )
+      }
+      itemsIndexed(
+        itemList2, key = { index, _ ->
+          "track2_$index"
+        }
+      ) { _, item ->
+        TrackContent(track = item)
+        Divider()
+      }
     },
     modifier = Modifier
       .fillMaxSize(),
@@ -112,7 +126,8 @@ private fun TrackContent(
   Row(
     modifier = modifier
       .fillMaxWidth()
-      .padding(horizontal = 16.dp, vertical = 16.dp)
+      .padding(horizontal = 16.dp, vertical = 16.dp),
+    verticalAlignment = Alignment.CenterVertically,
   ) {
     Image(
       painter = painterResource(id = track.imageResId),
@@ -127,7 +142,7 @@ private fun TrackContent(
         text = track.name,
         modifier = Modifier
           .padding(start = 16.dp),
-        color = MaterialTheme.colors.onPrimary,
+        color = MaterialTheme.colors.onSurface,
         fontSize = 16.sp
       )
 
