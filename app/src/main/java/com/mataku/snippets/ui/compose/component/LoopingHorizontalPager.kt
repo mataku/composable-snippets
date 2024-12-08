@@ -76,7 +76,7 @@ fun LoopingHorizontalBannerPagerSample(
             fontWeight = FontWeight.Bold,
             modifier = Modifier
               .padding(16.dp),
-            color = MaterialTheme.colors.onPrimary
+            color = MaterialTheme.colors.onSurface
           )
         }
       }
@@ -99,12 +99,12 @@ fun LoopingHorizontalBannerPagerSample(
 
     Column(modifier = Modifier.fillMaxWidth()) {
       Text(
-        text = "Current position",
+        text = "Current position (debug)",
         textAlign = TextAlign.Center,
         modifier = Modifier
           .fillMaxWidth()
           .padding(8.dp),
-        color = MaterialTheme.colors.onPrimary
+        color = MaterialTheme.colors.onSurface
       )
 
       Row(
