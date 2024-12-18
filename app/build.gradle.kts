@@ -31,6 +31,7 @@ dependencies {
   implementation(libs.accompanist.webview)
   implementation(libs.constraintlayout.compose)
   implementation(libs.compose.material.icons.extended)
+  implementation(libs.compose.lifecycle.runtime)
 
   implementation(libs.napier)
 
