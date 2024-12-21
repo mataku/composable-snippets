@@ -49,8 +49,3 @@ dependencies {
 
   implementation(libs.play.services.location)
 }
-
-repositories {
-  mavenCentral()
-  google()
-}
