@@ -1,6 +1,5 @@
 package com.mataku.snippets.ui.compose.component
 
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -36,7 +35,6 @@ import com.mataku.snippets.entity.Banner
 import com.mataku.snippets.ui.compose.preview.MultiThemePreview
 
 // Looping HorizontalPager
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun LoopingHorizontalBannerPagerSample(
   modifier: Modifier = Modifier,
