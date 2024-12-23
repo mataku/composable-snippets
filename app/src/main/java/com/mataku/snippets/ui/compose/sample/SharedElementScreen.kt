@@ -66,16 +66,14 @@ fun SharedElementScreen() {
         "details/{item_id}",
         arguments = listOf(navArgument("item_id") { type = NavType.IntType })
       ) { backStackEntry ->
-        val id = backStackEntry.arguments?.getInt("item_id")
-        val item = SharedElementItem.items.firstOrNull { it.id == id }
-        if (item != null) {
-          DetailsScreen(
-            item = item,
-            sharedTransitionScope = this@SharedTransitionLayout,
-            animatedContentScope = this@composable,
-            onBackPressed = navController::popBackStack,
-          )
-        }
+        val id = backStackEntry.arguments?.getInt("item_id") ?: return@composable
+        val item = SharedElementItem.items.firstOrNull { it.id == id } ?: return@composable
+        DetailsScreen(
+          item = item,
+          sharedTransitionScope = this@SharedTransitionLayout,
+          animatedContentScope = this@composable,
+          onBackPressed = navController::popBackStack,
+        )
       }
     }
   }
