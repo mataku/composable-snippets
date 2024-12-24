@@ -1,21 +1,24 @@
+@file:OptIn(ExperimentalFoundationApi::class)
+
 package com.mataku.snippets.ui.compose.sample
 
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Indication
 import androidx.compose.foundation.indication
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.PressInteraction
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.Favorite
 import androidx.compose.material.ripple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -31,6 +34,7 @@ import androidx.compose.ui.input.pointer.PointerEventPass
 import androidx.compose.ui.input.pointer.PointerEventType
 import androidx.compose.ui.node.ModifierNodeElement
 import androidx.compose.ui.node.PointerInputModifierNode
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -53,57 +57,57 @@ fun ClickableHandleScreen() {
   val state = rememberClickableHookState()
   val logList by state.log.collectAsStateWithLifecycle()
 
-  LazyColumn(
-    modifier = Modifier
-      .fillMaxWidth(),
-    verticalArrangement = Arrangement.Center,
+  Column(
+    modifier = Modifier.fillMaxSize(),
     horizontalAlignment = Alignment.CenterHorizontally,
-    contentPadding = PaddingValues(
-      horizontal = 16.dp,
-      vertical = 16.dp
-    )
   ) {
-    item(
-      key = "button"
+    Text(
+      text = "Click!!!!!!!!!!!!",
+      modifier = Modifier
+        .throttleClickable(
+          throttleTimeMs = 1000L,
+          onClick = {
+            state.addLog()
+          },
+          interactionSource = remember { MutableInteractionSource() },
+          indication = ripple()
+        )
+        .padding(
+          horizontal = 16.dp,
+          vertical = 8.dp
+        ),
+      fontSize = 16.sp
+    )
+    Spacer(
+      Modifier.height(16.dp)
+    )
+    LazyColumn(
+      modifier = Modifier
+        .fillMaxWidth(),
+      verticalArrangement = Arrangement.Center,
+      horizontalAlignment = Alignment.CenterHorizontally,
+      contentPadding = PaddingValues(
+        horizontal = 16.dp,
+        vertical = 16.dp
+      ),
     ) {
-      Text(
-        text = "Click!!!!!!!!!!!!",
-        modifier = Modifier
-          .throttleClickable(
-            throttleTimeMs = 500L,
-            onClick = {
-              state.addLog()
-            },
-            interactionSource = remember { MutableInteractionSource() },
-            indication = ripple()
-          )
-          .padding(
-            horizontal = 16.dp,
-            vertical = 8.dp
-          ),
-        fontSize = 16.sp
-      )
-    }
-    item(
-      key = "icon_button"
-    ) {
-      val clickAction = throttleFirst(500L) {
-        state.addLog()
-      }
-      IconButton(
-        onClick = {
-          clickAction.invoke()
-        }
+      stickyHeader(
+        key = "log_header"
       ) {
-        Icon(
-          Icons.Outlined.Favorite,
-          "favorite",
-          tint = MaterialTheme.colors.onSurface
+        Text(
+          text = "Click Log History",
+          modifier = Modifier
+            .fillMaxWidth()
+            .padding(
+              vertical = 8.dp
+            ),
+          fontWeight = FontWeight.Medium,
+          fontSize = 16.sp,
         )
       }
-    }
-    items(logList) { log ->
-      Cell(log = log)
+      items(logList) { log ->
+        Cell(log = log)
+      }
     }
   }
 }
@@ -183,6 +187,18 @@ class ThrottleClickableNode(
             }
           }
         }
+
+        PointerEventType.Move -> {
+          if (pass == PointerEventPass.Final && lastPress != null) {
+            val lastChange = pointerEvent.changes.lastOrNull() ?: return
+            if (!positionWithinBounds(lastChange.position, bounds)) {
+              interactionSource?.tryEmit(
+                PressInteraction.Release(lastPress!!)
+              )
+              lastPress = null
+            }
+          }
+        }
       }
     }
   }
@@ -237,7 +253,6 @@ fun throttleFirst(
   }
 }
 
-@Composable
 fun Modifier.throttleClickable(
   throttleTimeMs: Long = 500L,
   onClick: () -> Unit,
@@ -256,7 +271,6 @@ fun Modifier.throttleClickable(
         Modifier
       }
     )
-
     .then(ThrottleClickableElement(throttleTimeMs, onClick, interactionSource))
 }
 

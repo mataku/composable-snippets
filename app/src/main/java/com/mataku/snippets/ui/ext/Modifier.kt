@@ -13,10 +13,9 @@ fun Modifier.noRippleClickable(
   val interactionSource = remember {
     MutableInteractionSource()
   }
-  clickable(
+  return this then clickable(
     indication = null,
     interactionSource = interactionSource,
     onClick = onClick
   )
-  return this
 }
