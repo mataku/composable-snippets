@@ -21,12 +21,12 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.ScrollableTabRow
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.AccountBox
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.ScrollableTabRow
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
@@ -168,7 +168,7 @@ private fun ScaleAnimationHeaderTabList(
   ScrollableTabRow(
     selectedTabIndex = 0,
     modifier = Modifier,
-    backgroundColor = Color.Transparent,
+    containerColor = Color.Transparent,
     contentColor = Color.Transparent,
     indicator = {},
     divider = {},
@@ -211,7 +211,7 @@ private fun ScaleAnimationHeaderTab(
         if (selected) {
           Modifier
             .clip(RoundedCornerShape(14.dp))
-            .background(MaterialTheme.colors.onSurface)
+            .background(MaterialTheme.colorScheme.onSurface)
         } else {
           Modifier
         }
@@ -219,7 +219,6 @@ private fun ScaleAnimationHeaderTab(
   ) {
     Text(
       text = name,
-      style = MaterialTheme.typography.body1,
       color = Color.Gray,
       modifier = Modifier
         .padding(

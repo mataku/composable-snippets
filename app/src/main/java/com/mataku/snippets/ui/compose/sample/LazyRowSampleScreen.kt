@@ -23,10 +23,10 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Clear
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -92,7 +92,7 @@ private fun ClearSelectionButton(
   Box(
     modifier = modifier
       .clip(CircleShape)
-      .background(color = MaterialTheme.colors.onSurface)
+      .background(color = MaterialTheme.colorScheme.onSurface)
       .clickable {
         onClear.invoke()
       }
@@ -102,7 +102,7 @@ private fun ClearSelectionButton(
         image = Icons.Filled.Clear
       ),
       contentDescription = "Clear all selection",
-      tint = MaterialTheme.colors.surface,
+      tint = MaterialTheme.colorScheme.surface,
       modifier = Modifier
         .padding(8.dp)
     )

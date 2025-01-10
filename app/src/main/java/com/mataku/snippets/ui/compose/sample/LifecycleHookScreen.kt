@@ -5,8 +5,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.getValue
@@ -19,6 +19,7 @@ import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.google.android.catalog.framework.annotations.Sample
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
 
 @Sample(
@@ -67,7 +68,7 @@ fun rememberLifecycleHookState(): LifecycleHookState {
 class LifecycleHookState {
   private val _log: MutableStateFlow<List<String>> = MutableStateFlow(emptyList())
 
-  val log: MutableStateFlow<List<String>> = _log
+  val log: StateFlow<List<String>> = _log
 
   fun addLog(lifecycleEvent: String) {
     _log.update {
@@ -88,6 +89,6 @@ private fun Cell(
         horizontal = 12.dp,
         vertical = 8.dp
       ),
-    color = MaterialTheme.colors.onSurface
+    color = MaterialTheme.colorScheme.onSurface
   )
 }

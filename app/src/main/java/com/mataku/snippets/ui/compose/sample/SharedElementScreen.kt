@@ -1,5 +1,6 @@
 package com.mataku.snippets.ui.compose.sample
 
+import android.os.Parcelable
 import androidx.annotation.DrawableRes
 import androidx.compose.animation.AnimatedContentScope
 import androidx.compose.animation.ExperimentalSharedTransitionApi
@@ -20,10 +21,10 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
-import androidx.compose.material.Button
-import androidx.compose.material.Divider
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.Button
+import androidx.compose.material3.Divider
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -38,6 +39,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.google.android.catalog.framework.annotations.Sample
 import com.mataku.snippets.R
+import kotlinx.parcelize.Parcelize
 
 @OptIn(ExperimentalSharedTransitionApi::class)
 @Sample(
@@ -67,7 +69,7 @@ fun SharedElementScreen() {
         arguments = listOf(navArgument("item_id") { type = NavType.IntType })
       ) { backStackEntry ->
         val id = backStackEntry.arguments?.getInt("item_id") ?: return@composable
-        val item = SharedElementItem.items.firstOrNull { it.id == id } ?: return@composable
+        val item = SampleItem.items.firstOrNull { it.id == id } ?: return@composable
         DetailsScreen(
           item = item,
           sharedTransitionScope = this@SharedTransitionLayout,
@@ -84,9 +86,9 @@ fun SharedElementScreen() {
 private fun ListScreen(
   sharedTransitionScope: SharedTransitionScope,
   animatedContentScope: AnimatedContentScope,
-  onItemClick: (SharedElementItem) -> Unit
+  onItemClick: (SampleItem) -> Unit
 ) {
-  val results = SharedElementItem.items
+  val results = SampleItem.items
   val lastIndex = results.lastIndex
   LazyColumn(modifier = Modifier.fillMaxSize()) {
     itemsIndexed(results) { index, item ->
@@ -118,7 +120,7 @@ private fun ListScreen(
 @OptIn(ExperimentalSharedTransitionApi::class)
 @Composable
 private fun DetailsScreen(
-  item: SharedElementItem,
+  item: SampleItem,
   sharedTransitionScope: SharedTransitionScope,
   animatedContentScope: AnimatedContentScope,
   onBackPressed: () -> Unit,
@@ -151,7 +153,7 @@ private fun DetailsScreen(
       Text(
         text = item.name,
         fontSize = 14.sp,
-        color = MaterialTheme.colors.onSurface,
+        color = MaterialTheme.colorScheme.onSurface,
       )
 
       Spacer(
@@ -161,7 +163,7 @@ private fun DetailsScreen(
       Text(
         text = item.description,
         fontSize = 12.sp,
-        color = MaterialTheme.colors.onSecondary
+        color = MaterialTheme.colorScheme.onSecondary
       )
 
       Spacer(
@@ -219,7 +221,7 @@ private fun SharedTransitionScope.SharedElementRow(
       Text(
         text = title,
         fontSize = 14.sp,
-        color = MaterialTheme.colors.onSurface,
+        color = MaterialTheme.colorScheme.onSurface,
         modifier = Modifier,
       )
       Spacer(
@@ -228,39 +230,31 @@ private fun SharedTransitionScope.SharedElementRow(
       Text(
         text = description,
         fontSize = 12.sp,
-        color = MaterialTheme.colors.onSecondary
+        color = MaterialTheme.colorScheme.onSecondary
       )
     }
   }
 }
 
-private data class SharedElementItem(
+@Parcelize
+data class SampleItem(
   val id: Int,
   val name: String,
   val description: String,
   @DrawableRes val imageRes: Int,
-) {
+) : Parcelable {
   companion object {
-    val items = listOf(
-      SharedElementItem(
-        id = 1,
-        name = "Item 1",
-        description = "Description 1",
-        imageRes = R.drawable.kota
-      ),
-      SharedElementItem(
-        id = 2,
-        name = "Item 2",
-        description = "Description 2",
-        imageRes = R.drawable.ic_launcher_foreground
-      ),
-      SharedElementItem(
-        id = 3,
-        name = "Item 3",
-        description = "Description 3",
-        imageRes = R.drawable.ic_launcher_background
-      ),
-
+    val items = (1..20).map { i ->
+      SampleItem(
+        id = i,
+        name = "Item $i",
+        description = "Description $i",
+        imageRes = when (i % 3) {
+          0 -> R.drawable.kota
+          1 -> R.drawable.ic_launcher_background
+          else -> R.drawable.ic_launcher_foreground
+        }
       )
+    }
   }
 }

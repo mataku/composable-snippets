@@ -6,6 +6,7 @@ plugins {
   id("org.jetbrains.kotlin.android")
   id("com.google.devtools.ksp")
   id("com.google.gms.google-services")
+  id("kotlin-parcelize")
 }
 
 android {
@@ -25,7 +26,10 @@ dependencies {
   implementation(libs.activity.compose)
   implementation(libs.compose.ui.tooling)
   implementation(libs.compose.animation)
-  implementation(libs.compose.material)
+  implementation(libs.compose.material3)
+  implementation(libs.material3.adaptive)
+  implementation(libs.material3.adaptive.layout)
+  implementation(libs.material3.adaptive.navigation)
   implementation(libs.compose.navigation)
   implementation(libs.coil.compose)
   implementation(libs.accompanist.webview)

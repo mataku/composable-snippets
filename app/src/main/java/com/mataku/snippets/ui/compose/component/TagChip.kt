@@ -1,11 +1,11 @@
 package com.mataku.snippets.ui.compose.component
 
 import androidx.compose.foundation.shape.CornerSize
-import androidx.compose.material.Button
-import androidx.compose.material.ButtonDefaults
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -23,20 +23,20 @@ fun TagChip(
     shape = MaterialTheme.shapes.small.copy(CornerSize(percent = 50)),
     modifier = modifier,
     colors = ButtonDefaults.buttonColors(
-      backgroundColor = if (selected) {
-        MaterialTheme.colors.onSurface
+      containerColor = if (selected) {
+        MaterialTheme.colorScheme.onSurface
       } else {
-        MaterialTheme.colors.surface
-      }
+        MaterialTheme.colorScheme.surface
+      },
     )
   ) {
     Text(
       text = label,
       modifier = Modifier,
       color = if (selected) {
-        MaterialTheme.colors.surface
+        MaterialTheme.colorScheme.surface
       } else {
-        MaterialTheme.colors.onSurface
+        MaterialTheme.colorScheme.onSurface
       }
     )
   }

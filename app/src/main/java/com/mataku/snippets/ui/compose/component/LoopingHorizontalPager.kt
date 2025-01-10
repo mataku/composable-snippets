@@ -15,9 +15,9 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
@@ -74,7 +74,7 @@ fun LoopingHorizontalBannerPagerSample(
             fontWeight = FontWeight.Bold,
             modifier = Modifier
               .padding(16.dp),
-            color = MaterialTheme.colors.onSurface
+            color = MaterialTheme.colorScheme.onSurface
           )
         }
       }
@@ -102,7 +102,7 @@ fun LoopingHorizontalBannerPagerSample(
         modifier = Modifier
           .fillMaxWidth()
           .padding(8.dp),
-        color = MaterialTheme.colors.onSurface
+        color = MaterialTheme.colorScheme.onSurface
       )
 
       Row(

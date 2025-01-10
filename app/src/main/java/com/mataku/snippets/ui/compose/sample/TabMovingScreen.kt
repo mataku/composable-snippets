@@ -17,15 +17,14 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.material.Divider
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.material3.Divider
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -43,6 +42,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.google.android.catalog.framework.annotations.Sample
 import com.mataku.snippets.ui.ext.noRippleClickable
+import io.github.aakira.napier.Napier
 
 
 @Sample(
@@ -103,6 +103,7 @@ private fun Header(
   onClickTab: (Int) -> Unit,
   modifier: Modifier = Modifier,
 ) {
+  Napier.d("MATAKUDEBUg selectedIndex: $selectedIndex")
   var currentIndex = 1
   val radius = with(LocalDensity.current) {
     CornerRadius(16.dp.toPx())
@@ -295,9 +296,6 @@ private fun AnimationHeaderTab(
   isScrolled: Boolean,
   modifier: Modifier = Modifier,
 ) {
-  val contentSelected by remember {
-    mutableStateOf(isSelected)
-  }
   val tabTextFont by animateDpAsState(
     targetValue = if (isScrolled) {
       12.dp
@@ -308,8 +306,8 @@ private fun AnimationHeaderTab(
     animationSpec = tween(200),
   )
   val tabTextColor by animateColorAsState(
-    targetValue = if (contentSelected) {
-      Color.White
+    targetValue = if (isSelected) {
+      MaterialTheme.colorScheme.onSurface
     } else {
       Color.Gray
     },
@@ -322,7 +320,6 @@ private fun AnimationHeaderTab(
   ) {
     Text(
       text = name,
-      style = MaterialTheme.typography.body1,
       color = tabTextColor,
       modifier = Modifier,
       fontSize = with(LocalDensity.current) {

@@ -1,7 +1,7 @@
 package com.mataku.snippets.ui
 
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.darkColors
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.darkColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 
@@ -11,15 +11,14 @@ fun AppTheme(
   content: @Composable () -> Unit,
 ) {
   MaterialTheme(
-    colors = darkColors,
+    colorScheme = darkColors,
     content = content
   )
 }
 
-private val darkColors = darkColors(
+private val darkColors = darkColorScheme(
   primary = Color.DarkGray,
   onPrimary = Color.White,
-  primaryVariant = Colors.ContentBackground,
   secondary = Color.White,
   onSecondary = Colors.textSecondary,
   surface = Color(0xFF37474F),

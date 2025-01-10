@@ -19,7 +19,6 @@ import androidx.compose.ui.input.pointer.PointerEventType
 import androidx.compose.ui.node.ModifierNodeElement
 import androidx.compose.ui.node.PointerInputModifierNode
 import androidx.compose.ui.unit.IntSize
-import io.github.aakira.napier.Napier
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -99,7 +98,6 @@ class ThrottleClickableNode(
   }
 
   override fun onCancelPointerInput() {
-    Napier.d("MATAKUDEBUG cancel!!!!!!!!!!!")
     if (lastPress != null) {
       interactionSource?.tryEmit(
         PressInteraction.Cancel(lastPress!!)

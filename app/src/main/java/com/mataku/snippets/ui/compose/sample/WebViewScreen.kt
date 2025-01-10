@@ -9,15 +9,15 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Divider
-import androidx.compose.material.FloatingActionButton
-import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Info
+import androidx.compose.material3.Divider
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -37,7 +37,7 @@ import com.google.accompanist.web.rememberWebViewState
 import com.google.android.catalog.framework.annotations.Sample
 
 // Make WebView full screen
-@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter", "UnusedMaterial3ScaffoldPaddingParameter")
 @Sample(
   name = "WebView Sample",
   description = "WebView",
@@ -116,7 +116,7 @@ fun WebViewScreen() {
             Spacer(modifier = Modifier.weight(1F))
             Text(
               text = "OK",
-              color = MaterialTheme.colors.primary,
+              color = MaterialTheme.colorScheme.primary,
               modifier = Modifier
                 .clickable {
                   webViewInfoDisplayEnabled = false
