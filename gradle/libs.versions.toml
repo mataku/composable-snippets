@@ -41,7 +41,7 @@ compose-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel-compose",
 compose-navigation = { module = "androidx.navigation:navigation-compose", version = "2.8.7" }
 compose-lifecycle-runtime = { module = "androidx.lifecycle:lifecycle-runtime-compose", version = "2.8.7" }
 
-constraintlayout-compose = { module = "androidx.constraintlayout:constraintlayout-compose", version = "1.1.0" }
+constraintlayout-compose = { module = "androidx.constraintlayout:constraintlayout-compose", version = "1.1.1" }
 
 
 accompanist-webview = { module = "com.google.accompanist:accompanist-webview", version.ref = "accompanist" }
