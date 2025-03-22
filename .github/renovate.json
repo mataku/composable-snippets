@@ -8,8 +8,6 @@
     "com.google.accompanist:accompanist-webview",
     "org.jetbrains.kotlin:kotlin-gradle-plugin",
     "fastlane",
-    "org.jetbrains.kotlin.jvm",
-    "com.google.devtools.ksp",
     "casa",
     "fastlane-plugin-firebase_app_distribution"
   ],
@@ -23,6 +21,14 @@
       ],
       "automerge": true,
       "platformAutomerge": true
+    },
+    {
+      "groupName": "compose_compiler_kotlin",
+      "matchPackageNames": [
+        "androidx.compose.compiler{/,}**",
+        "org.jetbrains.kotlin{/,}**",
+        "com.google.devtools.ksp{/,}**"
+      ]
     }
   ],
   "ruby-version": {
