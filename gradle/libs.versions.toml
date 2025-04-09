@@ -2,7 +2,7 @@
 activity = "1.10.1"
 android-gradle-plugin = "8.9.1"
 accompanist = "0.34.0"
-androidx-core = "1.15.0"
+androidx-core = "1.16.0"
 casa = "0.5.1"
 compose = "2024.12.01"
 coroutines = "1.10.2"
