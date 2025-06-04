@@ -11,7 +11,7 @@ kotlin = "2.1.21"
 kotest = "5.4.2"
 ksp = "2.1.21-2.0.1"
 mockk = "1.12.8"
-webkit = "1.13.0"
+webkit = "1.14.0"
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "android-gradle-plugin" }
