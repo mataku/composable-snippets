@@ -41,6 +41,8 @@ local.properties
 .idea/deploymentTargetSelector.xml
 .idea/material_theme_project_new.xml
 .idea/runConfigurations.xml
+.idea/AndroidProjectSystem.xml
+.idea/deviceManager.xml
 
 *.iml
 .env
