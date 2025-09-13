@@ -9,7 +9,7 @@ coroutines = "1.10.2"
 hilt = "2.57.1"
 kotlin = "2.2.20"
 kotest = "5.4.2"
-ksp = "2.2.20-2.0.2"
+ksp = "2.2.20-2.0.3"
 mockk = "1.12.8"
 webkit = "1.14.0"
 
