@@ -5,11 +5,11 @@ accompanist = "0.34.0"
 androidx-core = "1.17.0"
 casa = "0.5.1"
 compose = "2024.12.01"
-coroutines = "1.10.2"
+coroutines = "1.11.0"
 hilt = "2.57.2"
-kotlin = "2.2.21"
+kotlin = "2.4.10"
 kotest = "5.4.2"
-ksp = "2.3.3"
+ksp = "2.3.11"
 mockk = "1.12.8"
 webkit = "1.15.0"
 
@@ -65,7 +65,7 @@ napier = { module = "io.github.aakira:napier", version = "2.7.1" }
 casa = { module = "com.google.android.catalog.framework:casa-ui", version.ref = "casa" }
 casa-processor = { module = "com.google.android.catalog.framework:casa-processor", version.ref = "casa" }
 
-kotlinx-collection = { module = "org.jetbrains.kotlinx:kotlinx-collections-immutable", version = "0.4.0" }
+kotlinx-collection = { module = "org.jetbrains.kotlinx:kotlinx-collections-immutable", version = "0.5.2" }
 webkit = { module = "androidx.webkit:webkit", version.ref = "webkit" }
 
 firebase-bom = { module = "com.google.firebase:firebase-bom", version = "34.8.0" }
